@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intelligent Traffic System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .video-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Intelligent Traffic System</h1>
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+            <input type="file" name="video_file" accept="video/*" required>
+            <button type="submit">Upload Video</button>
+        </form>
+        <div class="video-container">
+            <img src="{{ url_for('video_feed') }}">
+        </div>
+    </div>
+</body>
+</html>
