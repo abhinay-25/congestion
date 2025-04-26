@@ -1,46 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Intelligent Traffic System</title>
+    <meta charset="UTF-8">
+    <title>Traffic Monitoring - Multi Lane</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .video-container {
-            margin: 20px 0;
-            text-align: center;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
+        body { font-family: Arial, sans-serif; background: #f4f4f4; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; }
+        .lane-box { margin: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 16px; }
+        .lane-title { text-align: center; margin-bottom: 8px; }
+        img { display: block; margin: 0 auto; border-radius: 4px; max-width: 480px; max-height: 320px; }
     </style>
 </head>
 <body>
+    <h1 style="text-align:center;">Traffic Monitoring - Multi Lane Live Streams</h1>
     <div class="container">
-        <h1>Intelligent Traffic System</h1>
-        <form method="POST" action="/upload" enctype="multipart/form-data">
-            <input type="file" name="video_file" accept="video/*" required>
-            <button type="submit">Upload Video</button>
-        </form>
-        <div class="video-container">
-            <img src="{{ url_for('video_feed') }}">
+        {% for lane in range(1, 5) %}
+        <div class="lane-box">
+            <h2 class="lane-title">Lane {{ lane }}</h2>
+            <img src="{{ url_for('video_feed', lane_id=lane) }}" alt="Lane {{ lane }} Live Stream">
         </div>
+        {% endfor %}
     </div>
 </body>
 </html>
